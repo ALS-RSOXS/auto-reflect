@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Todo List
 
 ## Basic I/O operations
@@ -14,12 +13,8 @@
 - [ ] Get feedback logic
 - [ ] Build auto alignmene
 
-## QOLD
+## QOL
 
 - [x] Install BLS API into venv to avoid sys.path.append
 - [x] Type motors and AI's
 - [ ] Get formatting and type hinting working in this environment
-=======
-# auto-reflect
-Automatic reflectivity measurements in a python notebook
->>>>>>> fc688ee2652afcb7363d650b16fdb62604ba7136
