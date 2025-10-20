@@ -5,13 +5,15 @@ requires-python = ">=3.13"
 [[package]]
 name = "api-dev"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "asttokens" },
+    { name = "bcs" },
     { name = "colorama" },
     { name = "comm" },
     { name = "contourpy" },
     { name = "cycler" },
+    { name = "dacite" },
     { name = "debugpy" },
     { name = "decorator" },
     { name = "executing" },
@@ -51,6 +53,7 @@ dependencies = [
     { name = "stack-data" },
     { name = "threadpoolctl" },
     { name = "tornado" },
+    { name = "tqdm" },
     { name = "traitlets" },
     { name = "tzdata" },
     { name = "wcwidth" },
@@ -59,10 +62,12 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "asttokens", specifier = "==3.0.0" },
+    { name = "bcs", directory = "../../../../bcs-install" },
     { name = "colorama", specifier = "==0.4.6" },
     { name = "comm", specifier = "==0.2.3" },
     { name = "contourpy", specifier = "==1.3.3" },
     { name = "cycler", specifier = "==0.12.1" },
+    { name = "dacite", specifier = ">=1.9.2" },
     { name = "debugpy", specifier = "==1.8.17" },
     { name = "decorator", specifier = "==5.2.1" },
     { name = "executing", specifier = "==2.2.1" },
@@ -102,6 +107,7 @@ requires-dist = [
     { name = "stack-data", specifier = "==0.6.3" },
     { name = "threadpoolctl", specifier = "==3.6.0" },
     { name = "tornado", specifier = "==6.5.2" },
+    { name = "tqdm", specifier = ">=4.67.1" },
     { name = "traitlets", specifier = "==5.14.3" },
     { name = "tzdata", specifier = "==2025.2" },
     { name = "wcwidth", specifier = "==0.2.13" },
@@ -124,6 +130,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/4a/e7/82da0a03e7ba5141f
 wheels = [
     { url = "https://files.pythonhosted.org/packages/25/8a/c46dcc25341b5bce5472c718902eb3d38600a903b14fa6aeecef3f21a46f/asttokens-3.0.0-py3-none-any.whl", hash = "sha256:e3078351a059199dd5138cb1c706e6430c05eff2ff136af5eb4790f9d28932e2", size = 26918, upload-time = "2024-11-30T04:30:10.946Z" },
 ]
+
+[[package]]
+name = "bcs"
+version = "0.1.0"
+source = { directory = "../../../../bcs-install" }
 
 [[package]]
 name = "cffi"
@@ -250,6 +261,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a9/95/a3dbbb5028f35eafb79008e7522a75244477d2838f38cbb722248dabc2a8/cycler-0.12.1.tar.gz", hash = "sha256:88bb128f02ba341da8ef447245a9e138fae777f6a23943da4540077d3601eb1c", size = 7615, upload-time = "2023-10-07T05:32:18.335Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl", hash = "sha256:85cef7cff222d8644161529808465972e51340599459b8ac3ccbac5a854e0d30", size = 8321, upload-time = "2023-10-07T05:32:16.783Z" },
+]
+
+[[package]]
+name = "dacite"
+version = "1.9.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/55/a0/7ca79796e799a3e782045d29bf052b5cde7439a2bbb17f15ff44f7aacc63/dacite-1.9.2.tar.gz", hash = "sha256:6ccc3b299727c7aa17582f0021f6ae14d5de47c7227932c47fec4cdfefd26f09", size = 22420, upload-time = "2025-02-05T09:27:29.757Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/94/35/386550fd60316d1e37eccdda609b074113298f23cef5bddb2049823fe666/dacite-1.9.2-py3-none-any.whl", hash = "sha256:053f7c3f5128ca2e9aceb66892b1a3c8936d02c686e707bee96e19deef4bc4a0", size = 16600, upload-time = "2025-02-05T09:27:24.345Z" },
 ]
 
 [[package]]
@@ -1058,6 +1078,18 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/e8/59/593bd0f40f7355806bf6573b47b8c22f8e1374c9b6fd03114bd6b7a3dcfd/tornado-6.5.2-cp39-abi3-win32.whl", hash = "sha256:c6f29e94d9b37a95013bb669616352ddb82e3bfe8326fccee50583caebc8a5f0", size = 445023, upload-time = "2025-08-08T18:26:56.677Z" },
     { url = "https://files.pythonhosted.org/packages/c7/2a/f609b420c2f564a748a2d80ebfb2ee02a73ca80223af712fca591386cafb/tornado-6.5.2-cp39-abi3-win_amd64.whl", hash = "sha256:e56a5af51cc30dd2cae649429af65ca2f6571da29504a07995175df14c18f35f", size = 445427, upload-time = "2025-08-08T18:26:57.91Z" },
     { url = "https://files.pythonhosted.org/packages/5e/4f/e1f65e8f8c76d73658b33d33b81eed4322fb5085350e4328d5c956f0c8f9/tornado-6.5.2-cp39-abi3-win_arm64.whl", hash = "sha256:d6c33dc3672e3a1f3618eb63b7ef4683a7688e7b9e6e8f0d9aa5726360a004af", size = 444456, upload-time = "2025-08-08T18:26:59.207Z" },
+]
+
+[[package]]
+name = "tqdm"
+version = "4.67.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a8/4b/29b4ef32e036bb34e4ab51796dd745cdba7ed47ad142a9f4a1eb8e0c744d/tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2", size = 169737, upload-time = "2024-11-24T20:12:22.481Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d0/30/dc54f88dd4a2b5dc8a0279bdd7270e735851848b762aeb1c1184ed1f6b14/tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2", size = 78540, upload-time = "2024-11-24T20:12:19.698Z" },
 ]
 
 [[package]]
