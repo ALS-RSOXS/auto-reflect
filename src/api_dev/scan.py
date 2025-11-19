@@ -9,7 +9,7 @@ from bcs.BCSz import BCSServer
 from uncertainties import ufloat
 
 from .core import AbortFlag, motor_move, shutter_control, wait_for_settle
-from .types import ScanAbortedError, ScanPoint, ScanResult
+from .types import Instrument, ScanAbortedError, ScanPoint, ScanResult
 from .validation import validate_scan_dataframe
 
 # ============================================================================
@@ -26,6 +26,8 @@ class ScanPlan:
         motor_names: List[str],
         ai_channels: List[str],
         shutter: str = "Light Output",
+        instrument: Instrument = "Photodiode",
+        actuate_every: bool = True,
     ):
         self.points = points
         self.motor_names = motor_names
@@ -40,6 +42,7 @@ class ScanPlan:
         default_exposure: float = 1.0,
         default_delay: float = 0.2,
         shutter: str = "Light Output",
+        instrument: Instrument = "Photodiode",
     ) -> "ScanPlan":
         """
         Build validated scan plan from DataFrame.

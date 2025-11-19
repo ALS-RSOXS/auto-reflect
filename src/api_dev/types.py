@@ -219,6 +219,8 @@ type Command = Literal[
     "Revert Reverse SW Limit",
 ]
 
+type Instrument = Literal["CCD", "Photodiode"]
+
 dio = get_args(DIO.__value__)
 ai = get_args(AI.__value__)
 motor = get_args(Motor.__value__)

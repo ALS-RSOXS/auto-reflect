@@ -124,6 +124,15 @@ def validate_scan_dataframe(df: pd.DataFrame) -> tuple[List[str], Optional[str]]
     # Validate exposure values if column exists
     if exposure_col is not None:
         exposure_values = df[exposure_col]
+
+        # Check for NaN values in exposure
+        if exposure_values.isna().any():
+            nan_indices = df[exposure_values.isna()].index.tolist()
+            raise ValidationError(
+                f"NaN values found in exposure column '{exposure_col}' at rows: {nan_indices}"
+            )
+
+        # Check for invalid values
         if (exposure_values <= 0).any():
             invalid_indices = df[exposure_values <= 0].index.tolist()
             raise ValidationError(

@@ -12,6 +12,12 @@ A high-level, user-friendly Python interface for the ALS RSoXS beamline that:
 __version__ = "0.1.0"
 
 # Core types and exceptions
+# Type-safe accessors
+from .accessors import (
+    RsoxsAccessor,
+    TabularResponse,
+)
+
 # Core async primitives
 from .core import (
     AbortFlag,
@@ -21,10 +27,23 @@ from .core import (
     wait_for_settle,
 )
 
+# NEXAFS functionality
+from .nexafs import (
+    calculate_nexafs,
+    nexafs_scan,
+    normalize_to_edge_jump,
+)
+
 # Scan orchestration
 from .scan import (
     ScanExecutor,
     ScanPlan,
+)
+
+# High-level server
+from .server import (
+    Connection,
+    RsoxsServer,
 )
 from .types import (
     # Type literals
@@ -50,6 +69,17 @@ from .types import (
     motor,
 )
 
+# Utility functions
+from .utils import (
+    calculate_center_of_mass,
+    create_energy_scan,
+    create_grid_scan,
+    create_line_scan,
+    find_peak_position,
+    merge_scans,
+    resample_scan_data,
+)
+
 # Validation utilities
 from .validation import (
     find_exposure_column,
@@ -71,6 +101,7 @@ __all__ = [
     # Data structures
     "ScanPoint",
     "ScanResult",
+    "TabularResponse",
     # Types
     "AI",
     "Motor",
@@ -93,4 +124,20 @@ __all__ = [
     # Scan
     "ScanPlan",
     "ScanExecutor",
+    # Accessors and Server
+    "RsoxsAccessor",
+    "RsoxsServer",
+    "Connection",
+    # NEXAFS
+    "calculate_nexafs",
+    "nexafs_scan",
+    "normalize_to_edge_jump",
+    # Utilities
+    "create_grid_scan",
+    "create_line_scan",
+    "create_energy_scan",
+    "find_peak_position",
+    "calculate_center_of_mass",
+    "resample_scan_data",
+    "merge_scans",
 ]
