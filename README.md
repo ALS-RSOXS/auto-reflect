@@ -1,5 +1,5 @@
 # Todo List
-
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ALS-RSOXS/auto-reflect)
 ## Basic I/O operations
 
 - [x] Read AI's
