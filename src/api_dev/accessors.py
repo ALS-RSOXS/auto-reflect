@@ -1,8 +1,8 @@
 """
 Type-safe accessors for beamline components with uncertainty support.
 
-This module provides the RsoxsAccessor class for accessing AI channels, motors,
-and digital I/O with automatic uncertainty propagation.
+This module provides the RsoxsAccessor class as a Hardware Abstraction for accessing
+AI channels, motors, and digital I/O with automatic uncertainty propagation.
 """
 
 from dataclasses import dataclass
@@ -16,6 +16,14 @@ from uncertainties import ufloat
 from .types import AI, DIO, Motor
 
 T = TypeVar("T", bound=AI | Motor | DIO)
+
+# ===========================================================================
+# Uncertainty Propagation Management
+# ===========================================================================
+
+# ==========================================================================
+# Trajectories and Global Positions
+# ==========================================================================
 
 
 @dataclass

@@ -42,7 +42,7 @@ class ScanPlan:
         default_exposure: float = 1.0,
         default_delay: float = 0.2,
         shutter: str = "Light Output",
-        instrument: Instrument = "Photodiode",
+        instrument: Instrument = "Photodiode", #TODO: rename instrument to
     ) -> "ScanPlan":
         """
         Build validated scan plan from DataFrame.
@@ -255,3 +255,5 @@ class ScanExecutor:
         # Convert to DataFrame
         df = pd.DataFrame([r.to_series() for r in results])
         return df
+
+    

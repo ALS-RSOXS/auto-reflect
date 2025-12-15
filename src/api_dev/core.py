@@ -163,7 +163,7 @@ async def motor_move(
 
     try:
         # Move to target positions
-        command = "Backlash Move" if backlash else "Normal Move"
+        command = "Backlash Move"  # if backlash else "Backlash Move"
         await server.command_motor(
             commands=[command] * len(motors),
             motors=list(motors.keys()),

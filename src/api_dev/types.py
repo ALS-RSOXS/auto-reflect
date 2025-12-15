@@ -219,7 +219,7 @@ type Command = Literal[
     "Revert Reverse SW Limit",
 ]
 
-type Instrument = Literal["CCD", "Photodiode"]
+type Instrument = Literal["CCD", "Photodiode"] #TODO: rename to Detector
 
 dio = get_args(DIO.__value__)
 ai = get_args(AI.__value__)

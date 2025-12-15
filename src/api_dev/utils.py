@@ -5,6 +5,8 @@ This module provides helper functions for common beamline tasks
 like motor alignment, grid scan generation, and data analysis.
 """
 
+from typing import Literal
+
 import numpy as np
 import pandas as pd
 
@@ -354,3 +356,61 @@ def merge_scans(
         combined = combined.groupby(motor_col, as_index=False)[numeric_cols].mean()
 
     return combined
+
+
+def knife_edge_analysis(
+    scan_data: pd.DataFrame,
+    motor_col: str,
+    signal_col: str,
+    threshold: float = 0.5,
+    direct_beam: Literal["above", "below"] = "above",
+    visaulize: bool = False,
+) -> float:
+    """
+    Analyze knife-edge scan to find edge position.
+
+    Useful for aligning samples to incident beam.
+
+    Parameters
+    ----------
+    scan_data : pd.DataFrame
+        Scan results from scan_from_dataframe
+    motor_col : str
+        Motor position column name
+    signal_col : str
+        Signal column name
+    threshold : float, optional
+        Fraction of max signal to define edge (default: 0.5)
+    direct_beam : Literal["above", "below"], optional
+        Direction of direct beam relative to edge (default: "above")
+
+    Returns
+    -------
+    float
+        Estimated edge position
+
+    Examples
+    --------
+    >>> results = await server.scan_from_dataframe(scan_df, ...)
+    >>> edge_pos = knife_edge_analysis(
+    ...     results,
+    ...     motor_col="Sample Z_position",
+    ...     signal_col="Photodiode_mean"
+    ... )
+    >>> print(f"Edge position at {edge_pos:.2f}")
+    """
+    if not signal_col.endswith("_mean"):
+        signal_col = f"{signal_col}_mean"
+    positions = scan_data[motor_col].values
+    signal = scan_data[signal_col].values
+
+    max_signal = np.max(signal)
+    threshold_value = threshold * max_signal
+    # (above) calculate the first index where signal crosses threshold
+    if direct_beam == "above":
+        edge_idx = np.where(signal >= threshold_value)[0][0]
+    # (below) reverse the signal and find the first crossing
+    else:
+        edge_idx = np.where(signal[::-1] <= threshold_value)[0][0]
+    return positions[edge_idx]
+
