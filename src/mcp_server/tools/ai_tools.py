@@ -1,6 +1,8 @@
 """MCP tools for analog input (AI) channels."""
 
-from typing import Any
+from typing import Any, cast
+
+from api_dev.types import AI
 
 from ..connection import connection_manager
 from ..models import AIChannelResponse, AIUncertaintyResponse, AIValuesResponse
@@ -126,7 +128,8 @@ async def get_ai_with_uncertainty(
         if acquisition_time <= 0:
             raise ValueError("acquisition_time must be positive")
 
-        ufloat_data = await server.ai.get_with_uncertainty(keys=channels, acquisition_time=acquisition_time)
+        ai_channels = cast(list[AI], channels)
+        ufloat_data = await server.ai.get_with_uncertainty(keys=ai_channels, acquisition_time=acquisition_time)
 
         values = {}
         for chan, uval in ufloat_data.items():
