@@ -55,7 +55,6 @@ dependencies = [
     { name = "pyrefly" },
     { name = "python-dateutil" },
     { name = "pytz" },
-    { name = "pywin32" },
     { name = "pyzmq" },
     { name = "ruff" },
     { name = "scikit-learn" },
@@ -81,7 +80,7 @@ dev = [
 requires-dist = [
     { name = "asttokens", specifier = "==3.0.0" },
     { name = "asyncstdlib", specifier = ">=3.13.1" },
-    { name = "bcs", directory = "../../../../bcs-install" },
+    { name = "bcs", git = "https://github.com/ALS-RSOXS/bcs-install" },
     { name = "colorama", specifier = "==0.4.6" },
     { name = "comm", specifier = "==0.2.3" },
     { name = "contourpy", specifier = "==1.3.3" },
@@ -118,7 +117,6 @@ requires-dist = [
     { name = "pyrefly", specifier = "==0.33.1" },
     { name = "python-dateutil", specifier = "==2.9.0.post0" },
     { name = "pytz", specifier = "==2025.2" },
-    { name = "pywin32", specifier = "==311" },
     { name = "pyzmq", specifier = "==27.1.0" },
     { name = "ruff", specifier = "==0.13.1" },
     { name = "scikit-learn", specifier = "==1.7.2" },
@@ -168,7 +166,7 @@ wheels = [
 [[package]]
 name = "bcs"
 version = "0.1.0"
-source = { directory = "../../../../bcs-install" }
+source = { git = "https://github.com/ALS-RSOXS/bcs-install#53bfd955883601877942b7156d03f8fb5a0479a9" }
 
 [[package]]
 name = "cffi"

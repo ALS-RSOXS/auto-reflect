@@ -42,7 +42,6 @@ dependencies = [
     "pyrefly==0.33.1",
     "python-dateutil==2.9.0.post0",
     "pytz==2025.2",
-    "pywin32==311",
     "pyzmq==27.1.0",
     "ruff==0.13.1",
     "scikit-learn==1.7.2",
@@ -64,7 +63,7 @@ requires = ["uv_build>=0.9.4,<0.10.0"]
 build-backend = "uv_build"
 
 [tool.uv.sources]
-bcs = { path = "../../../../bcs-install" }
+bcs = { git = "https://github.com/ALS-RSOXS/bcs-install" }
 
 [dependency-groups]
 dev = [
